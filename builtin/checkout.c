@@ -566,6 +566,13 @@ static int skip_merge_working_tree(const struct checkout_opts *opts,
 	 * Remaining variables are not checkout options but used to track state
 	 */
 
+	 /*
+	  * Do the merge if this is the initial checkout
+	  *
+	  */
+	if (!file_exists(get_index_file()))
+		return 0;
+
 	return 1;
 }
 
